@@ -15,9 +15,6 @@ const mongoOptions ="retryWrites=true&w=majority";
 const dbConnectionString = `mongodb+srv://${ mongoUser }:${ mongoPassword }@${ mongoIp }/${ dbName }?${ mongoOptions }`;
 
 ( async ()=>{
-  /*const modelName = "Offenders";
-  const dbName = ""*/
-  //const dbConnectionString = process.env?.dbConnectionString ? process.env.dbConnectionString : `mongodb+srv://admin:nFzUj6IWX8y9FvcR@learningcluster.bhg1u.mongodb.net/?retryWrites=true&w=majority`;
   const offs = await connect(mongoose, dbConnectionString, {
     serialNumber: { type: String, required: true},
     name: { type: String, required: true },

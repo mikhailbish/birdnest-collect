@@ -86,7 +86,7 @@ const combine = async ( db ) => {
               }
             }
             await db.updateOne({ serialNumber }, {  ...entry }, options);
-          }).catch((err)=>{console.log("db update error", err)});
+          }).catch(error);
         });
     }
   }
