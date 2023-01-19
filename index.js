@@ -1,6 +1,7 @@
 
 const mongoose = require("mongoose");
 const cron = require("node-cron");
+const worker = require("./src/plugins/worker");
 const { doData } = require("./src/services/collect");
 const connect = require("./src/plugins/db/index");
 ( async ()=>{
@@ -15,5 +16,8 @@ const connect = require("./src/plugins/db/index");
     distance: { type: String, required: true },
     spotTime: { type: Date, expires: 600, required: true }
   }, modelName, dbName);
-  cron.schedule('*/2 * * * * *', () => { doData( offs ); });
+  worker(()=>{
+    cron.schedule('*/2 * * * * *', () => { doData( offs ); });
+  });
+
 })();
