@@ -1,6 +1,6 @@
 const axios = require('axios');
 const convert = require("xml-js");
-const error = require("./src/plugins/error");
+const error = require("../../plugins/error");
 const NOFLYDISTANCE = 100000;
 
 /*                                   Functions for Working with drones data source                                                         */
