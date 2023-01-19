@@ -65,7 +65,7 @@ const processOwnerData = ( illegalDrones ) => {
     dataEntries.push( axios.get(`https://assignments.reaktor.com/birdnest/pilots/${ serialNumber }`).then(( res ) => {
       const { firstName, lastName, phoneNumber, email } = res.data;
       return { serialNumber, name: `${ firstName } ${ lastName }`, phone: phoneNumber, email, spotTime: illegalDrones.timestamp, distance: illegalDrones.illegalDronesData[ i ].distance };
-    }));
+    }).catch(error));
   }
   return dataEntries;
 };
