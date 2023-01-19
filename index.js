@@ -5,10 +5,19 @@ const worker = require("./src/plugins/worker");
 const { doData } = require("./src/services/collect");
 const connect = require("./src/plugins/db");
 
+const dbName = process.env.dbName;
+const modelName = process.env.modelName;
+const mongoUser = process.env.collectMongoUser;
+const mongoPassword = process.env.collectMongoPassword;
+const mongoIp = process.env.mongoIp;
+const mongoOptions ="retryWrites=true&w=majority";
+
+const dbConnectionString = `mongodb+srv://${ mongoUser }:${ mongoPassword }@${ mongoIp }/${ dbName }?${ mongoOptions }`;
+
 ( async ()=>{
-  const modelName = "Offenders";
-  const dbName = ""
-  const dbConnectionString = process.env?.dbConnectionString ? process.env.dbConnectionString : `mongodb+srv://admin:nFzUj6IWX8y9FvcR@learningcluster.bhg1u.mongodb.net/?retryWrites=true&w=majority`;
+  /*const modelName = "Offenders";
+  const dbName = ""*/
+  //const dbConnectionString = process.env?.dbConnectionString ? process.env.dbConnectionString : `mongodb+srv://admin:nFzUj6IWX8y9FvcR@learningcluster.bhg1u.mongodb.net/?retryWrites=true&w=majority`;
   const offs = await connect(mongoose, dbConnectionString, {
     serialNumber: { type: String, required: true},
     name: { type: String, required: true },
