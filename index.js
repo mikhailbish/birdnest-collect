@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const cron = require("node-cron");
 const worker = require("./src/plugins/worker");
 const { doData } = require("./src/services/collect");
-const connect = require("./src/plugins/db/index");
+const connect = require("./src/plugins/db");
+
 ( async ()=>{
   const modelName = "Offenders";
   const dbName = ""

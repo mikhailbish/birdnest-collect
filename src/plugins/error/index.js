@@ -1,0 +1,1 @@
+module.exports = (err)=>{ console.log("error", err);}

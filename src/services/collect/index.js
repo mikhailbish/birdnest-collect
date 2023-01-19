@@ -1,5 +1,6 @@
 const axios = require('axios');
 const convert = require("xml-js");
+const error = require("./src/plugins/error");
 const NOFLYDISTANCE = 100000;
 
 /*                                   Functions for Working with drones data source                                                         */
@@ -89,7 +90,7 @@ const combine = async ( db ) => {
         });
     }
   }
-  axios.get("https://assignments.reaktor.com/birdnest/drones").then( processDroneData ).then( processOwnerData ).then( doDb ).catch(( err ) => {console.log("error",err)});
+  axios.get("https://assignments.reaktor.com/birdnest/drones").then( processDroneData ).catch(error).then( processOwnerData ).catch(error).then( doDb ).catch(error);
 }
 
 module.exports = { doData: combine }
